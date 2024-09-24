@@ -111,19 +111,21 @@ public class DefaultAutoMessageController implements AutoMessageController {
 
   @Override
   public boolean handleGameEnd() {
-    if (!this.configuration.enabled().get()) {
-      return false;
-    }
-
     final long currentTimeMillis = TimeUtil.getCurrentTimeMillis();
 
     if (this.lastMessage + 5_000 > currentTimeMillis) {
       return false;
     }
 
+    if (!this.configuration.enabled().get()) {
+      this.fastPlayController.handleGameEnd();
+      return false;
+    }
+
     final String text = this.configuration.text().get().trim();
 
     if (text.isEmpty()) {
+      this.fastPlayController.handleGameEnd();
       return false;
     }
 
