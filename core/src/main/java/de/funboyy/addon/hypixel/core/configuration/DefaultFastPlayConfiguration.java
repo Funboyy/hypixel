@@ -26,7 +26,7 @@ public class DefaultFastPlayConfiguration extends Config implements FastPlayConf
   @SwitchSetting
   private final ConfigProperty<Boolean> auto = new ConfigProperty<>(false);
 
-  @SliderSetting(min = 0f, max = 15f)
+  @SliderSetting(min = 0f, max = 10f)
   private final ConfigProperty<Integer> delay = new ConfigProperty<>(5);
 
   @Override

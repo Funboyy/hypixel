@@ -4,6 +4,7 @@ import de.funboyy.addon.hypixel.api.Hypixel;
 import de.funboyy.addon.hypixel.api.configuration.FastPlayConfiguration;
 import de.funboyy.addon.hypixel.api.configuration.FastPlayConfiguration.FastPlay;
 import de.funboyy.addon.hypixel.api.controller.FastPlayController;
+import de.funboyy.addon.hypixel.api.location.GameMode;
 import de.funboyy.addon.hypixel.api.location.LocationController;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -62,18 +63,23 @@ public class DefaultFastPlayController implements FastPlayController {
 
   @Override
   public void handleGameEnd() {
-    if (!this.configuration.enabled().get() || this.configuration.auto().get()) {
+    if (!this.configuration.enabled().get() || !this.configuration.auto().get()) {
       return;
     }
 
     final int delay = this.configuration.delay().get();
+    final GameMode mode = this.locationController.location().mode();
 
-    if (delay == 0) {
-      this.locationController.rejoin();
+    if (mode == null || mode == GameMode.UNKNOWN) {
       return;
     }
 
-    this.scheduler.schedule(() -> this.locationController.rejoin(), delay, TimeUnit.SECONDS);
+    if (delay == 0) {
+      this.locationController.join(mode);
+      return;
+    }
+
+    this.scheduler.schedule(() -> this.locationController.join(mode), delay, TimeUnit.SECONDS);
   }
 
 }

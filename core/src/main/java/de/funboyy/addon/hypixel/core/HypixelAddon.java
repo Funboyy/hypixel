@@ -38,8 +38,8 @@ public class HypixelAddon extends LabyAddon<DefaultHypixelConfiguration> impleme
 
     this.chatRegistry = new DefaultChatRegistry(this);
     this.locationController = new DefaultLocationController(this);
-    this.autoMessageController = new DefaultAutoMessageController(this);
     this.fastPlayController = new DefaultFastPlayController(this);
+    this.autoMessageController = new DefaultAutoMessageController(this);
     this.tipController = new DefaultTipController(this);
     this.server = new HypixelServer(this);
   }

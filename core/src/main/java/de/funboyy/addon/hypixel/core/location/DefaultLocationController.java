@@ -35,15 +35,6 @@ public class DefaultLocationController implements LocationController {
   }
 
   @Override
-  public void rejoin() {
-    final GameMode mode = this.location.mode();
-
-    if (mode != null && mode != GameMode.UNKNOWN) {
-      this.join(mode);
-    }
-  }
-
-  @Override
   public void requestLocation() {
     Laby.references().chatExecutor().chat("/locraw", false);
   }
