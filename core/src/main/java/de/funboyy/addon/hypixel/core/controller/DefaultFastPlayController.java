@@ -1,0 +1,79 @@
+package de.funboyy.addon.hypixel.core.controller;
+
+import de.funboyy.addon.hypixel.api.Hypixel;
+import de.funboyy.addon.hypixel.api.configuration.FastPlayConfiguration;
+import de.funboyy.addon.hypixel.api.configuration.FastPlayConfiguration.FastPlay;
+import de.funboyy.addon.hypixel.api.controller.FastPlayController;
+import de.funboyy.addon.hypixel.api.location.LocationController;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import net.labymod.api.Laby;
+import net.labymod.api.client.Minecraft;
+import net.labymod.api.event.Subscribe;
+import net.labymod.api.event.client.input.KeyEvent;
+import net.labymod.api.event.client.input.KeyEvent.State;
+
+public class DefaultFastPlayController implements FastPlayController {
+
+  private final Minecraft minecraft;
+  private final FastPlayConfiguration configuration;
+  private final LocationController locationController;
+  private final ScheduledExecutorService scheduler;
+
+  public DefaultFastPlayController(final Hypixel hypixel) {
+    this.minecraft = Laby.labyAPI().minecraft();
+    this.configuration = hypixel.configuration().fastPlayConfiguration();
+    this.locationController = hypixel.locationController();
+    this.scheduler = Executors.newScheduledThreadPool(1);
+  }
+
+  @Subscribe
+  public void handleKey(final KeyEvent event) {
+    if (event.state() != State.UNPRESSED) {
+      return;
+    }
+
+    if (!this.configuration.enabled().get()) {
+      return;
+    }
+
+    if (this.minecraft.minecraftWindow().isScreenOpened()) {
+      return;
+    }
+
+    if (!this.minecraft.isIngame()) {
+      return;
+    }
+
+    for (final FastPlay fastPlay : this.configuration.elements()) {
+      if (!fastPlay.enabled()) {
+        continue;
+      }
+
+      if (fastPlay.key() != event.key()) {
+        continue;
+      }
+
+      this.locationController.join(fastPlay.mode());
+      break;
+    }
+  }
+
+  @Override
+  public void handleGameEnd() {
+    if (!this.configuration.enabled().get() || this.configuration.auto().get()) {
+      return;
+    }
+
+    final int delay = this.configuration.delay().get();
+
+    if (delay == 0) {
+      this.locationController.rejoin();
+      return;
+    }
+
+    this.scheduler.schedule(() -> this.locationController.rejoin(), delay, TimeUnit.SECONDS);
+  }
+
+}

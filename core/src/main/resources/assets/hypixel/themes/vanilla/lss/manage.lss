@@ -1,0 +1,95 @@
+.title {
+  margin-bottom: 5;
+
+  alignment-x: center;
+  alignment-y: center;
+}
+
+.label {
+  margin: 2 5 2 5;
+}
+
+.input {
+  top: 0;
+  left: 0;
+  height: 20;
+  width: fit-content;
+  margin: 2 5 2 5;
+
+  alignment-y: center;
+}
+
+DropdownPopupWidget {
+  max-height: 50;
+}
+
+.manage-container {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clear-depth: true;
+}
+
+.input-container {
+  width: 100%;
+  height: 135;
+  left: 50%;
+  top: 47%;
+  alignment-x: center;
+  alignment-y: center;
+
+  background-color: rgba(20, 20, 20, 150);
+  padding: 10;
+}
+
+.input-list {
+  left: 0;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+}
+
+.entry {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: fit-content;
+  layout: spread;
+}
+
+.remove-container {
+  width: 90%;
+  height: fit-content;
+  left: 50%;
+  top: 50%;
+  alignment-x: center;
+  alignment-y: center;
+  space-between-entries: 15;
+
+	background-color: rgba(20, 20, 20, 150);
+  padding: 10;
+}
+
+.remove-confirmation {
+  left: 50%;
+  alignment-x: center;
+}
+
+.remove-preview {
+  left: 50%;
+  alignment-x: center;
+  height: 24;
+  width: 100%;
+  border: 1 gray;
+  background-color: black;
+}
+
+.remove-button-menu {
+  left: 50%;
+  alignment-x: center;
+  height: 20;
+  layout: fill;
+  space-between-entries: 8;
+  width: 90%;
+}

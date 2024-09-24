@@ -1,0 +1,70 @@
+{
+  "hypixel": {
+    "settings": {
+      "enabled": {
+        "name": "Enabled",
+        "description": "Enables/Disables all features of the addon"
+      },
+      "autoMessageConfiguration": {
+        "name": "Auto Message",
+        "description": "The 'Auto Message' feature sends a message when a game ends",
+        "text": {
+          "name": "Message",
+          "description": "This message will be send when a game ends"
+        },
+        "repeatText": {
+          "name": "Secondary Message",
+          "description": "This message will be used if the first message fails to send"
+        },
+        "delay": {
+          "name": "Delay (in seconds)",
+          "description": "This delay (in seconds) is waited after the game ends and before the message is send"
+        }
+      },
+      "fastPlayConfiguration": {
+        "name": "Fast Play",
+        "description": "The 'Fast Play' feature adds keys to join a game mode quickly and also enables you to automatically join a new game directly when the previous game ends",
+        "manageElements": {
+          "name": "Manage Fast Play",
+          "description": "Here you can manage your keys to join a specific mode"
+        },
+        "auto": {
+          "name": "Auto Join",
+          "description": "Enables/Disables if you will automatically join a new game after the previous game ended"
+        },
+        "delay": {
+          "name": "Delay (in seconds)",
+          "description": "This delay is waited before automatically joining a new game after the previous game ended"
+        }
+      },
+      "tipConfiguration": {
+        "name": "Auto Tip",
+        "description": "The 'Auto Tip' feature tips all players every few minutes",
+        "delay": {
+          "name": "Delay (in minutes)",
+          "description": "This delay is waited before the next time '/tip all' gets executed"
+        },
+        "showMessage": {
+          "name": "Show Tip Message",
+          "description": "Enabled/Disabled if you will receive a message when tipping a player"
+        },
+        "showErrorMessage": {
+          "name": "Show Error Message",
+          "description": "Enabled/Disabled if you will receive a message when the command fails"
+        }
+      }
+    },
+    "gui": {
+      "fastPlay": {
+        "title": {
+          "manage": "Manage Fast Play Entry",
+          "remove": "Do you really want to remove this entry?"
+        },
+        "enabled": "Enabled",
+        "type": "Lobby",
+        "mode": "Mode",
+        "key": "Key"
+      }
+    }
+  }
+}
