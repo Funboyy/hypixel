@@ -7,6 +7,7 @@ import de.funboyy.addon.hypixel.api.controller.AutoMessageController;
 import de.funboyy.addon.hypixel.api.controller.FastPlayController;
 import de.funboyy.addon.hypixel.api.controller.TipController;
 import de.funboyy.addon.hypixel.api.location.LocationController;
+import de.funboyy.addon.hypixel.api.util.GradientBuilder;
 import de.funboyy.addon.hypixel.core.chat.DefaultChatRegistry;
 import de.funboyy.addon.hypixel.core.command.LocationCommand;
 import de.funboyy.addon.hypixel.core.configuration.DefaultHypixelConfiguration;
@@ -15,10 +16,17 @@ import de.funboyy.addon.hypixel.core.controller.DefaultFastPlayController;
 import de.funboyy.addon.hypixel.core.controller.DefaultTipController;
 import de.funboyy.addon.hypixel.core.location.DefaultLocationController;
 import net.labymod.api.addon.LabyAddon;
+import net.labymod.api.client.component.Component;
+import net.labymod.api.client.component.format.NamedTextColor;
+import net.labymod.api.client.component.format.TextDecoration;
 import net.labymod.api.models.addon.annotation.AddonMain;
 
 @AddonMain
 public class HypixelAddon extends LabyAddon<DefaultHypixelConfiguration> implements Hypixel {
+
+  private static final Component PREFIX = Component.text("[", NamedTextColor.DARK_GRAY)
+      .append(GradientBuilder.builder().text("Hypixel").color(NamedTextColor.GOLD, NamedTextColor.YELLOW).build())
+      .append(Component.text("]", NamedTextColor.DARK_GRAY)).decorate(TextDecoration.BOLD);
 
   private static HypixelAddon instance;
 
@@ -56,6 +64,16 @@ public class HypixelAddon extends LabyAddon<DefaultHypixelConfiguration> impleme
   @Override
   protected Class<DefaultHypixelConfiguration> configurationClass() {
     return DefaultHypixelConfiguration.class;
+  }
+
+  @Override
+  public String namespace() {
+    return super.addonInfo().getNamespace();
+  }
+
+  @Override
+  public void displayChatMessage(final Component message) {
+    super.displayMessage(Component.empty().append(PREFIX).append(Component.space()).append(message));
   }
 
   @Override

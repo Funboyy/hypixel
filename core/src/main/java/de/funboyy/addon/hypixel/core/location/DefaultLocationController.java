@@ -22,6 +22,7 @@ public class DefaultLocationController implements LocationController {
       + "(?:,\"lobbyname\":\"(?<name>[^\"]+)\")?}$");
 
   private Location location = LIMBO;
+  private GameMode lastMode = null;
   private boolean retry = true;
 
   public DefaultLocationController(final Hypixel hypixel) {
@@ -44,6 +45,11 @@ public class DefaultLocationController implements LocationController {
     return this.location;
   }
 
+  @Override
+  public GameMode lastMode() {
+    return this.lastMode;
+  }
+
   private boolean handleLocation(final Matcher matcher) {
     final String server = matcher.group("server");
     final String name = matcher.group("name");
@@ -52,6 +58,10 @@ public class DefaultLocationController implements LocationController {
     final String map = matcher.group("map");
 
     this.location = new Location(server, name,  type, mode, map);
+
+    if (mode != null) {
+      this.lastMode = mode;
+    }
 
     if (!server.equals("limbo")) {
       this.retry = true;

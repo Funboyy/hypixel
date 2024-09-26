@@ -6,10 +6,15 @@ import de.funboyy.addon.hypixel.api.controller.AutoMessageController;
 import de.funboyy.addon.hypixel.api.controller.FastPlayController;
 import de.funboyy.addon.hypixel.api.controller.TipController;
 import de.funboyy.addon.hypixel.api.location.LocationController;
+import net.labymod.api.client.component.Component;
 
 public interface Hypixel {
 
   HypixelConfiguration configuration();
+
+  String namespace();
+
+  void displayChatMessage(final Component message);
 
   boolean isEnabled();
 

@@ -2,25 +2,19 @@ package de.funboyy.addon.hypixel.core.command;
 
 import de.funboyy.addon.hypixel.api.Hypixel;
 import de.funboyy.addon.hypixel.api.location.Location;
-import de.funboyy.addon.hypixel.api.util.GradientBuilder;
 import net.labymod.api.client.chat.command.Command;
 import net.labymod.api.client.component.Component;
 import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.client.component.format.TextColor;
-import net.labymod.api.client.component.format.TextDecoration;
 
 public class LocationCommand extends Command {
 
-  private static final Component PREFIX = Component.text("[", NamedTextColor.DARK_GRAY)
-      .append(GradientBuilder.builder().text("Hypixel").color(NamedTextColor.GOLD, NamedTextColor.YELLOW).build())
-      .append(Component.text("]", NamedTextColor.DARK_GRAY)).decorate(TextDecoration.BOLD);
   private static final TextColor INFO_COLOR = TextColor.color(213, 213, 128);
 
   private final Hypixel hypixel;
 
   public LocationCommand(final Hypixel hypixel) {
     super("location", "loc");
-    super.messagePrefix(PREFIX);
 
     this.hypixel = hypixel;
   }
@@ -55,7 +49,7 @@ public class LocationCommand extends Command {
           .append(Component.text(location.name(), INFO_COLOR));
     }
 
-    super.displayMessage(message);
+    this.hypixel.displayChatMessage(message);
     return true;
   }
 }

@@ -6,26 +6,31 @@ import de.funboyy.addon.hypixel.api.configuration.FastPlayConfiguration.FastPlay
 import de.funboyy.addon.hypixel.api.controller.FastPlayController;
 import de.funboyy.addon.hypixel.api.location.GameMode;
 import de.funboyy.addon.hypixel.api.location.LocationController;
+import de.funboyy.addon.hypixel.core.HypixelAddon;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import net.labymod.api.Laby;
 import net.labymod.api.client.Minecraft;
+import net.labymod.api.client.component.Component;
+import net.labymod.api.client.component.format.NamedTextColor;
 import net.labymod.api.event.Subscribe;
 import net.labymod.api.event.client.input.KeyEvent;
 import net.labymod.api.event.client.input.KeyEvent.State;
 
 public class DefaultFastPlayController implements FastPlayController {
 
+  private final Hypixel hypixel;
   private final Minecraft minecraft;
   private final FastPlayConfiguration configuration;
   private final LocationController locationController;
   private final ScheduledExecutorService scheduler;
 
   public DefaultFastPlayController(final Hypixel hypixel) {
+    this.hypixel = hypixel;
     this.minecraft = Laby.labyAPI().minecraft();
-    this.configuration = hypixel.configuration().fastPlayConfiguration();
-    this.locationController = hypixel.locationController();
+    this.configuration = this.hypixel.configuration().fastPlayConfiguration();
+    this.locationController = this.hypixel.locationController();
     this.scheduler = Executors.newScheduledThreadPool(1);
   }
 
@@ -44,6 +49,25 @@ public class DefaultFastPlayController implements FastPlayController {
     }
 
     if (!this.minecraft.isIngame()) {
+      return;
+    }
+
+    if (event.key() == this.configuration.playAgain().get()) {
+      final GameMode mode = this.locationController.lastMode();
+
+      if (mode == null) {
+        this.hypixel.displayChatMessage(Component.translatable(this.hypixel.namespace()
+            + ".message.playAgain.missing", NamedTextColor.RED));
+        return;
+      }
+
+      if (mode == GameMode.UNKNOWN) {
+        this.hypixel.displayChatMessage(Component.translatable(this.hypixel.namespace()
+            + ".message.playAgain.unknown", NamedTextColor.RED));
+        return;
+      }
+
+      this.locationController.join(mode);
       return;
     }
 

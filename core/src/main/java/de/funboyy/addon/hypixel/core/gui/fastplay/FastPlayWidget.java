@@ -49,7 +49,7 @@ public class FastPlayWidget extends SimpleWidget {
   }
 
   private Icon iconWidget() {
-    final String namespace = HypixelAddon.get().addonInfo().getNamespace();
+    final String namespace = HypixelAddon.get().namespace();
     final ServerType type = this.fastPlay.type();
 
     if (type == null) {

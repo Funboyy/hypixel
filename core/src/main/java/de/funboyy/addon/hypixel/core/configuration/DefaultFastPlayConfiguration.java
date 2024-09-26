@@ -5,7 +5,9 @@ import de.funboyy.addon.hypixel.core.gui.fastplay.FastPlayActivity;
 import java.util.ArrayList;
 import java.util.List;
 import net.labymod.api.client.gui.screen.activity.Activity;
+import net.labymod.api.client.gui.screen.key.Key;
 import net.labymod.api.client.gui.screen.widget.widgets.activity.settings.ActivitySettingWidget.ActivitySetting;
+import net.labymod.api.client.gui.screen.widget.widgets.input.KeybindWidget.KeyBindSetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SliderWidget.SliderSetting;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
 import net.labymod.api.configuration.loader.Config;
@@ -22,6 +24,9 @@ public class DefaultFastPlayConfiguration extends Config implements FastPlayConf
 
   @Exclude
   private final List<FastPlay> elements = new ArrayList<>();
+
+  @KeyBindSetting(acceptMouseButtons = true)
+  private final ConfigProperty<Key> playAgain = new ConfigProperty<>(Key.NONE);
 
   @SwitchSetting
   private final ConfigProperty<Boolean> auto = new ConfigProperty<>(false);
@@ -44,6 +49,11 @@ public class DefaultFastPlayConfiguration extends Config implements FastPlayConf
   @MethodOrder(after = "enabled")
   public Activity manageElements() {
     return new FastPlayActivity();
+  }
+
+  @Override
+  public ConfigProperty<Key> playAgain() {
+    return this.playAgain;
   }
 
   @Override

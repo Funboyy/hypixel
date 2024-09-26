@@ -56,7 +56,7 @@ public class FastPlayActivity extends Activity {
     final HypixelAddon addon = HypixelAddon.get();
 
     this.configuration = addon.configuration().fastPlayConfiguration();
-    this.translationPrefix = addon.addonInfo().getNamespace() + ".gui.fastPlay.";
+    this.translationPrefix = addon.namespace() + ".gui.fastPlay.";
 
     this.fastPlayWidgets = new ArrayList<>();
 

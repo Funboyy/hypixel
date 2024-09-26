@@ -16,6 +16,8 @@ public interface FastPlayConfiguration extends ConfigAccessor {
 
   Activity manageElements();
 
+  ConfigProperty<Key> playAgain();
+
   ConfigProperty<Boolean> auto();
 
   ConfigProperty<Integer> delay();

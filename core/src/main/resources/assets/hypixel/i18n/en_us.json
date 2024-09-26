@@ -28,6 +28,10 @@
           "name": "Manage Fast Play",
           "description": "Here you can manage your keys to join a specific mode"
         },
+        "playAgain": {
+          "name": "Play Again",
+          "description": "When pressing this key you will automatically join the last game mode you played"
+        },
         "auto": {
           "name": "Auto Join",
           "description": "Enables/Disables if you will automatically join a new game after the previous game ended"
@@ -64,6 +68,12 @@
         "type": "Lobby",
         "mode": "Mode",
         "key": "Key"
+      }
+    },
+    "message": {
+      "playAgain": {
+        "missing": "You have to play a game mode first.",
+        "unknown": "Unknown last game mode..."
       }
     }
   }
