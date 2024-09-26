@@ -54,8 +54,17 @@ public class DefaultTipController implements TipController {
     }
 
     this.scheduler = Executors.newScheduledThreadPool(1);
-    this.scheduler.scheduleWithFixedDelay(() -> Laby.references().chatExecutor().chat("/tip all", false),
-        10, this.configuration.delay().get() * 60, TimeUnit.SECONDS);
+    this.scheduler.schedule(this::schedule, 10, TimeUnit.SECONDS);
+  }
+
+  private void schedule() {
+    Laby.references().chatExecutor().chat("/tip all", false);
+
+    if (this.scheduler == null) {
+      return;
+    }
+
+    this.scheduler.schedule(this::schedule, this.configuration.delay().get(), TimeUnit.MINUTES);
   }
 
   @Override
