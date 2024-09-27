@@ -4,7 +4,7 @@ import org.jetbrains.annotations.Nullable;
 
 public enum GameMode {
 
-  UNKNOWN(null, "Unknown", null),
+  UNKNOWN(null, "Unknown", null, false),
 
   // Blitz Survival Games
   BLITZ_SOLO_NORMAL(ServerType.SURVIVAL_GAMES, "Solo", "SOLO_NORMAL"),
@@ -74,6 +74,9 @@ public enum GameMode {
   SUPER_SMASH_TEAMS_NORMAL(ServerType.SUPER_SMASH, "Team", "TEAMS_NORMAL"),
   SUPER_SMASH_1V1_NORMAL(ServerType.SUPER_SMASH, "1v1", "1V1_NORMAL"),
   SUPER_SMASH_2V2_NORMAL(ServerType.SUPER_SMASH, "2v2", "2V2_NORMAL"),
+
+  // Housing
+  HOUSING(ServerType.HOUSING, "Base", "BASE", false),
 
   // SkyWars
   SOLO_NORMAL(ServerType.SKYWARS, "Solo Normal"),
@@ -174,8 +177,30 @@ public enum GameMode {
   DUELS_UHC_FOUR(ServerType.DUELS, "UHC Teams"),
   DUELS_UHC_MEETUP(ServerType.DUELS, "UHC Deathmatch"),
 
+  // SkyBlock
+  SKYBLOCK_HUB(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Hub", "HUB", false),
+  SKYBLOCK_ISLAND(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Private Island", "DYNAMIC", false),
+  SKYBLOCK_DARK_AUCTION(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Dark Auction", "DARK_AUCTION", false),
+  SKYBLOCK_JERRY_WORKSHOP(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Jerry's Workshop", "WINTER", false),
+  SKYBLOCK_GARDEN(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "The Garden", "GARDEN", false),
+  SKYBLOCK_FARMING_ISLAND(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "The Farming Islands", "FARMING_1", false),
+  SKYBLOCK_PARK(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "The Park", "FORAGING_1", false),
+  SKYBLOCK_GOLD_MINE(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Gold Mine", "MINING_1", false),
+  SKYBLOCK_DEEP_CAVERNS(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Deep Caverns", "MINING_2", false),
+  SKYBLOCK_DWARVEN_MINES(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Dwarven Mines", "MINING_3", false),
+  SKYBLOCK_CRYSTAL_HOLLOWS(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Crystal Hollows", "CRYSTAL_HOLLOWS", false),
+  SKYBLOCK_SPIDER_DEN(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Spider's Den", "COMBAT_1", false),
+  SKYBLOCK_BLAZING_FORTRESS(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Blazing Fortress", "COMBAT_2", false),
+  SKYBLOCK_END(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "The End", "COMBAT_3", false),
+  SKYBLOCK_CRIMSON_ISLE(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Crimson Isle", "CRIMSON_ISLE", false),
+  SKYBLOCK_KUDDRA_HOLLOW(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Kuudra's Hollow", "INSTANCED", false),
+  SKYBLOCK_DUNGEON(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Dungeons", "DUNGEON", false),
+
   // Pit
   PIT(ServerType.PIT, "Pit"),
+
+  // Replay
+  REPLAY(ServerType.REPLAY, "Base", "BASE", false),
 
   // Wool Games
   WOOL_SHEEP_WARS_TWO_SIX(ServerType.WOOL_GAMES, "Sheep Wars", "SHEEP_WARS_TWO_SIX"),
@@ -186,12 +211,30 @@ public enum GameMode {
   private final ServerType serverType;
   private final String name;
   private final String modeName;
+  private final boolean fastPlay;
+
+  GameMode(final ServerType lobbyType, final ServerType serverType, final String name, final String modeName, final boolean fastPlay) {
+    this.lobbyType = lobbyType;
+    this.serverType = serverType;
+    this.name = name;
+    this.modeName = modeName;
+    this.fastPlay = fastPlay;
+  }
+
+  GameMode(final ServerType type, final String name, final String modeName, final boolean fastPlay) {
+    this.lobbyType = type;
+    this.serverType = type;
+    this.name = name;
+    this.modeName = modeName;
+    this.fastPlay = fastPlay;
+  }
 
   GameMode(final ServerType lobbyType, final ServerType serverType, final String name, final String modeName) {
     this.lobbyType = lobbyType;
     this.serverType = serverType;
     this.name = name;
     this.modeName = modeName;
+    this.fastPlay = true;
   }
 
   GameMode(final ServerType type, final String name, final String modeName) {
@@ -199,6 +242,7 @@ public enum GameMode {
     this.serverType = type;
     this.name = name;
     this.modeName = modeName;
+    this.fastPlay = true;
   }
 
   GameMode(final ServerType lobbyType, final ServerType serverType, final String name) {
@@ -206,6 +250,7 @@ public enum GameMode {
     this.serverType = serverType;
     this.name = name;
     this.modeName = super.name();
+    this.fastPlay = true;
   }
 
   GameMode(final ServerType type, final String name) {
@@ -213,6 +258,7 @@ public enum GameMode {
     this.serverType = type;
     this.name = name;
     this.modeName = super.name();
+    this.fastPlay = true;
   }
 
   public ServerType lobbyType() {
@@ -229,6 +275,10 @@ public enum GameMode {
 
   public String modeName() {
     return this.modeName;
+  }
+
+  public boolean fastPlay() {
+    return this.fastPlay;
   }
 
   @Nullable

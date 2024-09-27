@@ -73,7 +73,8 @@
     "message": {
       "playAgain": {
         "missing": "You have to play a game mode first.",
-        "unknown": "Unknown last game mode..."
+        "unknown": "Unknown last game mode...",
+        "disabled": "This game mode is not supported."
       }
     }
   }

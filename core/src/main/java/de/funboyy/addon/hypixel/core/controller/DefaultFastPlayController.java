@@ -67,6 +67,12 @@ public class DefaultFastPlayController implements FastPlayController {
         return;
       }
 
+      if (!mode.fastPlay()) {
+        this.hypixel.displayChatMessage(Component.translatable(this.hypixel.namespace()
+            + ".message.playAgain.disabled", NamedTextColor.RED));
+        return;
+      }
+
       this.locationController.join(mode);
       return;
     }
@@ -94,7 +100,7 @@ public class DefaultFastPlayController implements FastPlayController {
     final int delay = this.configuration.delay().get();
     final GameMode mode = this.locationController.location().mode();
 
-    if (mode == null || mode == GameMode.UNKNOWN) {
+    if (mode == null || mode == GameMode.UNKNOWN || !mode.fastPlay()) {
       return;
     }
 
