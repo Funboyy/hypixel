@@ -44,11 +44,10 @@ public enum GameMode {
   ARCADE_ZOMBIES_BAD_BLOOD(ServerType.ARCADE, "Zombies Bad Blood", "ZOMBIES_BAD_BLOOD"),
   ARCADE_ZOMBIES_ALIEN_ARCADIUM(ServerType.ARCADE, "Zombies Alien Arcadium", "ZOMBIES_ALIEN_ARCADIUM"),
   ARCADE_ZOMBIES_PRISON(ServerType.ARCADE, "Zombies Prison", "ZOMBIES_PRISON"),
-  // ToDo: event modes
-  //ARCADE_GRINCH_SIMULATOR_V2(ServerType.ARCADE, "Grinch Simulator", "GRINCH_SIMULATOR_V2"),
-  //ARCADE_SANTA_SAYS(ServerType.ARCADE, "Santa Says", "SANTA_SAYS"),
-  //ARCADE_EASTER_SIMULATOR(ServerType.ARCADE, "Easter Simulator", "EASTER_SIMULATOR"),
-  //ARCADE_HALLOWEEN_SIMULATOR(ServerType.ARCADE, "Halloween Simulator", "HALLOWEEN_SIMULATOR"),
+  ARCADE_GRINCH_SIMULATOR_V2(ServerType.ARCADE, "Grinch Simulator", "GRINCH_SIMULATOR_V2"),
+  ARCADE_SANTA_SAYS(ServerType.ARCADE, "Santa Says", "SANTA_SAYS"),
+  ARCADE_EASTER_SIMULATOR(ServerType.ARCADE, "Easter Simulator", "EASTER_SIMULATOR"),
+  ARCADE_HALLOWEEN_SIMULATOR(ServerType.ARCADE, "Halloween Simulator", "HALLOWEEN_SIMULATOR"),
 
   // Cops and Crims
   MCGO_NORMAL(ServerType.MCGO, "Defusal", "NORMAL"),
