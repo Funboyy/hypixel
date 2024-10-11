@@ -73,7 +73,7 @@ public class DefaultTipController implements TipController {
       return;
     }
 
-    this.scheduler.shutdown();
+    this.scheduler.shutdownNow();
     this.scheduler = null;
   }
 
