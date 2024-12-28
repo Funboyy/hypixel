@@ -26,7 +26,7 @@ labyMod {
         displayName = "Hypixel"
         author = "Funboyy"
         description = "A nice helpful addon for Hypixel"
-        minecraftVersion = "*" // as long we don't use mixins // "1.8.9<1.21.1"
+        minecraftVersion = "*"
         version = rootProject.version.toString()
     }
 }

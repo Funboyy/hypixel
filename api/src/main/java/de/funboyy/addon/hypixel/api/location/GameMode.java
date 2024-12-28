@@ -146,6 +146,7 @@ public enum GameMode {
   BUILD_BATTLE_TEAMS_NORMAL(ServerType.BUILD_BATTLE, "Teams"),
   BUILD_BATTLE_SOLO_PRO(ServerType.BUILD_BATTLE, "Pro"),
   BUILD_BATTLE_GUESS_THE_BUILD(ServerType.BUILD_BATTLE, "Guess The Build"),
+  BUILD_BATTLE_SPEED_BUILDERS(ServerType.BUILD_BATTLE, "Speed Builders"),
 
   // Duels
   DUELS_CLASSIC_DUEL(ServerType.DUELS, "Classic Duel"),
