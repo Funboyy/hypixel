@@ -7,6 +7,7 @@ import de.funboyy.addon.hypixel.api.configuration.TipConfiguration;
 import net.labymod.api.addon.AddonConfig;
 import net.labymod.api.client.gui.screen.widget.widgets.input.SwitchWidget.SwitchSetting;
 import net.labymod.api.configuration.loader.annotation.ConfigName;
+import net.labymod.api.configuration.loader.annotation.VersionCompatibility;
 import net.labymod.api.configuration.loader.property.ConfigProperty;
 
 @ConfigName("settings")
@@ -20,6 +21,10 @@ public class DefaultHypixelConfiguration extends AddonConfig implements HypixelC
   private final DefaultFastPlayConfiguration fastPlayConfiguration = new DefaultFastPlayConfiguration();
 
   private final DefaultTipConfiguration tipConfiguration = new DefaultTipConfiguration();
+
+  @SwitchSetting
+  @VersionCompatibility("1.8.9")
+  private final ConfigProperty<Boolean> glowing = new ConfigProperty<>(true);
 
   @Override
   public ConfigProperty<Boolean> enabled() {
@@ -41,4 +46,8 @@ public class DefaultHypixelConfiguration extends AddonConfig implements HypixelC
     return this.tipConfiguration;
   }
 
+  @Override
+  public ConfigProperty<Boolean> glowing() {
+    return this.glowing;
+  }
 }

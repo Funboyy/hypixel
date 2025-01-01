@@ -1,6 +1,7 @@
 {
   "hypixel": {
     "settings": {
+      "name": "Hypixel",
       "enabled": {
         "name": "Enabled",
         "description": "Enables/Disables all features of the addon"
@@ -50,12 +51,16 @@
         },
         "showMessage": {
           "name": "Show Tip Message",
-          "description": "Enabled/Disabled if you will receive a message when tipping a player"
+          "description": "Enables/Disables if you will receive a message when tipping a player"
         },
         "showErrorMessage": {
           "name": "Show Error Message",
-          "description": "Enabled/Disabled if you will receive a message when the command fails"
+          "description": "Enables/Disables if you will receive a message when the command fails"
         }
+      },
+      "glowing": {
+        "name": "Allow Glowing",
+        "description": "Enables/Disables if you will see the glowing effect in lobbies"
       }
     },
     "gui": {
