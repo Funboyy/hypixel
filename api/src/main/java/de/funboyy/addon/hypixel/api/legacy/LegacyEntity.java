@@ -1,8 +1,8 @@
 package de.funboyy.addon.hypixel.api.legacy;
 
-import net.labymod.api.client.entity.player.Player;
+import net.labymod.api.client.entity.Entity;
 
-public interface LegacyEntity extends Player {
+public interface LegacyEntity extends Entity {
 
   boolean isGlowing();
 
