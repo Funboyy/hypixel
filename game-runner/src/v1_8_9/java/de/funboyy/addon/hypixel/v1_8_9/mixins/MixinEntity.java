@@ -55,7 +55,7 @@ public abstract class MixinEntity implements LegacyEntity {
           target = "Lnet/minecraft/entity/Entity;setSilent(Z)V"
       )
   )
-  private void glow$readFromNBT(final NBTTagCompound compound, final CallbackInfo callbackInfo) {
+  private void hypixel$readFromNBT(final NBTTagCompound compound, final CallbackInfo callbackInfo) {
     this.legacyEntity$setGlowing(compound.getBoolean("Glowing"));
   }
 
