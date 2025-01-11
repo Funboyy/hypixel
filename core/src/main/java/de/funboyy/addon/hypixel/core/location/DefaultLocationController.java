@@ -59,7 +59,7 @@ public class DefaultLocationController implements LocationController {
 
     this.location = new Location(server, name,  type, mode, map);
 
-    if (mode != null) {
+    if (mode != null && mode.queueable()) {
       this.lastMode = mode;
     }
 

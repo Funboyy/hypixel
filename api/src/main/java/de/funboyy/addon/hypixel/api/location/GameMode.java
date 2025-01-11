@@ -86,7 +86,6 @@ public enum GameMode {
   MEGA_DOUBLES(ServerType.SKYWARS, "Mega Doubles"),
   SOLO_INSANE_LUCKY(ServerType.SKYWARS, "Solo Lucky Block"),
   TEAMS_INSANE_LUCKY(ServerType.SKYWARS, "Doubles Lucky Block"),
-  // ToDo: is there also a rotation or which modes are accessible?
   //SOLO_INSANE_SLIME(ServerType.SKYWARS, "Solo Slime"),
   //TEAMS_INSANE_SLIME(ServerType.SKYWARS, "Doubles Slime"),
   //SOLO_INSANE_RUSH(ServerType.SKYWARS, "Solo Rush"),
@@ -109,8 +108,9 @@ public enum GameMode {
 
   // Prototype
   SKYBLOCK(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "SkyBlock"),
+  PROTOTYPE_DISASTERS(ServerType.PROTOTYPE, "Disasters"),
 
-  // Bed Wars (how we wanna do the dream modes)
+  // Bed Wars
   BEDWARS_EIGHT_ONE(ServerType.BEDWARS, "Solo"),
   BEDWARS_EIGHT_TWO(ServerType.BEDWARS, "Doubles"),
   BEDWARS_FOUR_THREE(ServerType.BEDWARS, "3v3v3v3"),
@@ -211,22 +211,22 @@ public enum GameMode {
   private final ServerType serverType;
   private final String name;
   private final String modeName;
-  private final boolean fastPlay;
+  private final boolean queueable;
 
-  GameMode(final ServerType lobbyType, final ServerType serverType, final String name, final String modeName, final boolean fastPlay) {
+  GameMode(final ServerType lobbyType, final ServerType serverType, final String name, final String modeName, final boolean queueable) {
     this.lobbyType = lobbyType;
     this.serverType = serverType;
     this.name = name;
     this.modeName = modeName;
-    this.fastPlay = fastPlay;
+    this.queueable = queueable;
   }
 
-  GameMode(final ServerType type, final String name, final String modeName, final boolean fastPlay) {
+  GameMode(final ServerType type, final String name, final String modeName, final boolean queueable) {
     this.lobbyType = type;
     this.serverType = type;
     this.name = name;
     this.modeName = modeName;
-    this.fastPlay = fastPlay;
+    this.queueable = queueable;
   }
 
   GameMode(final ServerType lobbyType, final ServerType serverType, final String name, final String modeName) {
@@ -234,7 +234,7 @@ public enum GameMode {
     this.serverType = serverType;
     this.name = name;
     this.modeName = modeName;
-    this.fastPlay = true;
+    this.queueable = true;
   }
 
   GameMode(final ServerType type, final String name, final String modeName) {
@@ -242,7 +242,7 @@ public enum GameMode {
     this.serverType = type;
     this.name = name;
     this.modeName = modeName;
-    this.fastPlay = true;
+    this.queueable = true;
   }
 
   GameMode(final ServerType lobbyType, final ServerType serverType, final String name) {
@@ -250,7 +250,7 @@ public enum GameMode {
     this.serverType = serverType;
     this.name = name;
     this.modeName = super.name();
-    this.fastPlay = true;
+    this.queueable = true;
   }
 
   GameMode(final ServerType type, final String name) {
@@ -258,7 +258,7 @@ public enum GameMode {
     this.serverType = type;
     this.name = name;
     this.modeName = super.name();
-    this.fastPlay = true;
+    this.queueable = true;
   }
 
   public ServerType lobbyType() {
@@ -277,8 +277,8 @@ public enum GameMode {
     return this.modeName;
   }
 
-  public boolean fastPlay() {
-    return this.fastPlay;
+  public boolean queueable() {
+    return this.queueable;
   }
 
   @Nullable

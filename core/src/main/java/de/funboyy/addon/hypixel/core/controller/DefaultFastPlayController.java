@@ -6,7 +6,6 @@ import de.funboyy.addon.hypixel.api.configuration.FastPlayConfiguration.FastPlay
 import de.funboyy.addon.hypixel.api.controller.FastPlayController;
 import de.funboyy.addon.hypixel.api.location.GameMode;
 import de.funboyy.addon.hypixel.api.location.LocationController;
-import de.funboyy.addon.hypixel.core.HypixelAddon;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -67,7 +66,7 @@ public class DefaultFastPlayController implements FastPlayController {
         return;
       }
 
-      if (!mode.fastPlay()) {
+      if (!mode.queueable()) {
         this.hypixel.displayChatMessage(Component.translatable(this.hypixel.namespace()
             + ".message.playAgain.disabled", NamedTextColor.RED));
         return;
@@ -100,7 +99,7 @@ public class DefaultFastPlayController implements FastPlayController {
     final int delay = this.configuration.delay().get();
     final GameMode mode = this.locationController.location().mode();
 
-    if (mode == null || mode == GameMode.UNKNOWN || !mode.fastPlay()) {
+    if (mode == null || mode == GameMode.UNKNOWN || !mode.queueable()) {
       return;
     }
 
