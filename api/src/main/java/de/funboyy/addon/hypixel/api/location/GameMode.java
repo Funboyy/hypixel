@@ -108,7 +108,7 @@ public enum GameMode {
 
   // Prototype
   SKYBLOCK(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "SkyBlock"),
-  PROTOTYPE_DISASTERS(ServerType.PROTOTYPE, "Disasters"),
+  PROTOTYPE_DISASTERS(ServerType.PROTOTYPE, "Disasters", "DISASTERS"),
 
   // Bed Wars
   BEDWARS_EIGHT_ONE(ServerType.BEDWARS, "Solo"),
