@@ -40,10 +40,6 @@ public interface FastPlayConfiguration extends ConfigAccessor {
       return new FastPlay(enabled, type, mode, key);
     }
 
-    public static FastPlay createDefault() {
-      return create(true, null, null, Key.NONE);
-    }
-
     public boolean enabled() {
       return this.enabled;
     }

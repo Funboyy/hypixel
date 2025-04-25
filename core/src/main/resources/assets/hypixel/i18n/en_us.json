@@ -66,13 +66,24 @@
     "gui": {
       "fastPlay": {
         "title": {
-          "manage": "Manage Fast Play Entry",
-          "remove": "Do you really want to remove this entry?"
+          "add": "Create Fast Play Entry",
+          "edit": "Manage Fast Play Entry",
+          "remove": "Delete Fast Play Entry"
         },
-        "enabled": "Enabled",
-        "type": "Lobby",
-        "mode": "Mode",
-        "key": "Key"
+        "label": {
+          "enabled": "Enabled",
+          "type": "Lobby",
+          "mode": "Mode",
+          "key": "Key"
+        },
+        "button": {
+          "add": "Add",
+          "edit": "Edit",
+          "remove": "Remove",
+          "done": "Done",
+          "confirm": "Confirm",
+          "cancel": "Cancel"
+        }
       }
     },
     "message": {

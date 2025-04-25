@@ -6,6 +6,7 @@ import de.funboyy.addon.hypixel.api.configuration.FastPlayConfiguration.FastPlay
 import de.funboyy.addon.hypixel.api.controller.FastPlayController;
 import de.funboyy.addon.hypixel.api.location.GameMode;
 import de.funboyy.addon.hypixel.api.location.LocationController;
+import de.funboyy.addon.hypixel.api.location.Mode;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -52,7 +53,7 @@ public class DefaultFastPlayController implements FastPlayController {
     }
 
     if (event.key() == this.configuration.playAgain().get()) {
-      final GameMode mode = this.locationController.lastMode();
+      final Mode mode = this.locationController.lastMode();
 
       if (mode == null) {
         this.hypixel.displayChatMessage(Component.translatable(this.hypixel.namespace()
@@ -60,7 +61,7 @@ public class DefaultFastPlayController implements FastPlayController {
         return;
       }
 
-      if (mode == GameMode.UNKNOWN) {
+      if (!(mode instanceof GameMode gameMode)) {
         this.hypixel.displayChatMessage(Component.translatable(this.hypixel.namespace()
             + ".message.playAgain.unknown", NamedTextColor.RED));
         return;
@@ -72,7 +73,7 @@ public class DefaultFastPlayController implements FastPlayController {
         return;
       }
 
-      this.locationController.join(mode);
+      this.locationController.join(gameMode);
       return;
     }
 
@@ -97,18 +98,18 @@ public class DefaultFastPlayController implements FastPlayController {
     }
 
     final int delay = this.configuration.delay().get();
-    final GameMode mode = this.locationController.location().mode();
+    final Mode mode = this.locationController.location().mode();
 
-    if (mode == null || mode == GameMode.UNKNOWN || !mode.queueable()) {
+    if (!(mode instanceof GameMode gameMode) || !mode.queueable()) {
       return;
     }
 
     if (delay == 0) {
-      this.locationController.join(mode);
+      this.locationController.join(gameMode);
       return;
     }
 
-    this.scheduler.schedule(() -> this.locationController.join(mode), delay, TimeUnit.SECONDS);
+    this.scheduler.schedule(() -> this.locationController.join(gameMode), delay, TimeUnit.SECONDS);
   }
 
 }

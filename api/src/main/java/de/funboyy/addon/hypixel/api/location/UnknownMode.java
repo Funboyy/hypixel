@@ -16,17 +16,7 @@ public class UnknownMode implements Mode {
   }
 
   @Override
-  public Type gameType() {
-    return this.type;
-  }
-
-  @Override
   public String displayName() {
-    return this.name;
-  }
-
-  @Override
-  public String modeName() {
     return this.name;
   }
 

@@ -1,4 +1,4 @@
-package de.funboyy.addon.hypixel.core.gui.fastplay;
+package de.funboyy.addon.hypixel.core.gui.fastplay.widget;
 
 import de.funboyy.addon.hypixel.api.configuration.FastPlayConfiguration.FastPlay;
 import de.funboyy.addon.hypixel.api.location.GameMode;

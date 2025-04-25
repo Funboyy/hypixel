@@ -1,7 +1,7 @@
 package de.funboyy.addon.hypixel.core.configuration;
 
 import de.funboyy.addon.hypixel.api.configuration.FastPlayConfiguration;
-import de.funboyy.addon.hypixel.core.gui.fastplay.FastPlayActivity;
+import de.funboyy.addon.hypixel.core.gui.fastplay.activity.FastPlayActivity;
 import java.util.ArrayList;
 import java.util.List;
 import net.labymod.api.client.gui.screen.activity.Activity;

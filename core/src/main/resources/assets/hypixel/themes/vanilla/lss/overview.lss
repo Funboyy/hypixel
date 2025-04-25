@@ -77,7 +77,7 @@ FastPlay {
   }
 }
 
-.overview-button-menu {
+.button-menu {
   width: 90%;
   height: 20;
   left: 50%;
@@ -86,15 +86,4 @@ FastPlay {
   layout: fill;
   space-between-entries: 8;
   margin-bottom: 5;
-}
-
-.edit-button-menu {
-  width: 90%;
-  height: 20;
-  left: 50%;
-  alignment-x: center;
-  bottom: 0;
-  layout: fill;
-  space-between-entries: 8;
-  margin: 5 5 0 5;
 }
