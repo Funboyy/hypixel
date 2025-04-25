@@ -50,7 +50,7 @@ public class MixinRenderManager {
       at = @At("HEAD"),
       cancellable = true
   )
-  private void murder$checkHitBox(final Entity entity, final float partialTicks,
+  private void murder$checkGlowing(final Entity entity, final float partialTicks,
       final CallbackInfoReturnable<Boolean> returnable) {
 
     if (!this.renderOutlines) {
@@ -58,7 +58,6 @@ public class MixinRenderManager {
     }
 
     if (!hypixel$isEnabled()) {
-      returnable.cancel();
       return;
     }
 
