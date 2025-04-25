@@ -2,9 +2,7 @@ package de.funboyy.addon.hypixel.api.location;
 
 import org.jetbrains.annotations.Nullable;
 
-public enum GameMode {
-
-  UNKNOWN(null, "Unknown", null, false),
+public enum GameMode implements Mode {
 
   // Blitz Survival Games
   BLITZ_SOLO_NORMAL(ServerType.SURVIVAL_GAMES, "Solo", "SOLO_NORMAL"),
@@ -78,6 +76,7 @@ public enum GameMode {
   HOUSING(ServerType.HOUSING, "Base", "BASE", false),
 
   // SkyWars
+  MINI_NORMAL(ServerType.SKYWARS, "Mini Normal"),
   SOLO_NORMAL(ServerType.SKYWARS, "Solo Normal"),
   TEAMS_NORMAL(ServerType.SKYWARS, "Doubles Normal"),
   SOLO_INSANE(ServerType.SKYWARS, "Solo Insane"),
@@ -261,6 +260,7 @@ public enum GameMode {
     this.queueable = true;
   }
 
+  @Override
   public ServerType lobbyType() {
     return this.lobbyType;
   }
@@ -269,6 +269,7 @@ public enum GameMode {
     return this.serverType;
   }
 
+  @Override
   public String displayName() {
     return this.name;
   }
@@ -277,27 +278,9 @@ public enum GameMode {
     return this.modeName;
   }
 
+  @Override
   public boolean queueable() {
     return this.queueable;
-  }
-
-  @Nullable
-  public static GameMode of(final ServerType type, final String name) {
-    if (type == null || name == null) {
-      return null;
-    }
-
-    for (final GameMode mode : values()) {
-      if (mode.gameType() != type) {
-        continue;
-      }
-
-      if (mode.modeName().equalsIgnoreCase(name)) {
-        return mode;
-      }
-    }
-
-    return UNKNOWN;
   }
 
   @Nullable

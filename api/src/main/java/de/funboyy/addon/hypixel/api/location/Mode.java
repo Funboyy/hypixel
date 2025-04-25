@@ -6,11 +6,7 @@ public interface Mode {
 
   Type lobbyType();
 
-  Type gameType();
-
   String displayName();
-
-  String modeName();
 
   boolean queueable();
 
