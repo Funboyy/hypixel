@@ -8,6 +8,6 @@ public interface LocationController {
 
   Location location();
 
-  GameMode lastMode();
+  Mode lastMode();
 
 }

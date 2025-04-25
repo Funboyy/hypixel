@@ -6,8 +6,8 @@ import org.jetbrains.annotations.Nullable;
 public record Location(
     @NotNull String server,
     @Nullable String name,
-    @NotNull ServerType type,
-    @Nullable GameMode mode,
+    @NotNull Type type,
+    @Nullable Mode mode,
     @Nullable String map) {
 
 }

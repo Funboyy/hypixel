@@ -3,9 +3,11 @@ package de.funboyy.addon.hypixel.core.location;
 import de.funboyy.addon.hypixel.api.Hypixel;
 import de.funboyy.addon.hypixel.api.chat.filter.AdvancedChatFilter;
 import de.funboyy.addon.hypixel.api.location.GameMode;
+import de.funboyy.addon.hypixel.api.location.Mode;
 import de.funboyy.addon.hypixel.api.location.ServerType;
 import de.funboyy.addon.hypixel.api.location.Location;
 import de.funboyy.addon.hypixel.api.location.LocationController;
+import de.funboyy.addon.hypixel.api.location.Type;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import net.labymod.api.Laby;
@@ -22,7 +24,7 @@ public class DefaultLocationController implements LocationController {
       + "(?:,\"lobbyname\":\"(?<name>[^\"]+)\")?}$");
 
   private Location location = LIMBO;
-  private GameMode lastMode = null;
+  private Mode lastMode = null;
   private boolean retry = true;
 
   public DefaultLocationController(final Hypixel hypixel) {
@@ -46,15 +48,16 @@ public class DefaultLocationController implements LocationController {
   }
 
   @Override
-  public GameMode lastMode() {
+  public Mode lastMode() {
     return this.lastMode;
   }
 
+  @SuppressWarnings("SameReturnValue")
   private boolean handleLocation(final Matcher matcher) {
     final String server = matcher.group("server");
     final String name = matcher.group("name");
-    final ServerType type = ServerType.of(matcher.group("type"));
-    final GameMode mode = GameMode.of(type, matcher.group("mode"));
+    final Type type = Type.of(matcher.group("type"));
+    final Mode mode = Mode.of(type, matcher.group("mode"));
     final String map = matcher.group("map");
 
     this.location = new Location(server, name,  type, mode, map);

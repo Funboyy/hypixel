@@ -1,9 +1,8 @@
 package de.funboyy.addon.hypixel.api.location;
 
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public enum ServerType {
+public enum ServerType implements Type {
 
   LIMBO("Limbo", -1),
 
@@ -63,39 +62,19 @@ public enum ServerType {
     this.fastPlay = fastPlay;
   }
 
+  @Override
   public String displayName() {
     return this.name;
   }
 
-  public int id() {
-    return this.id;
-  }
-
+  @Override
   public boolean fastPlay() {
     return this.fastPlay;
   }
 
+  @Override
   public boolean isLimbo() {
     return this.id == -1;
-  }
-
-  public boolean isSpecial() {
-    return this.id == 0 || this.isLimbo();
-  }
-
-  @NotNull
-  public static ServerType of(final String name) {
-    if (name == null) {
-      return LIMBO;
-    }
-
-    for (final ServerType type : values()) {
-      if (type.name().equals(name)) {
-        return type;
-      }
-    }
-
-    return LIMBO;
   }
 
   @Nullable
