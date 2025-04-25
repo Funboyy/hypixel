@@ -40,6 +40,10 @@ public class DefaultFastPlayController implements FastPlayController {
       return;
     }
 
+    if (!this.hypixel.isEnabled()) {
+      return;
+    }
+
     if (!this.configuration.enabled().get()) {
       return;
     }
