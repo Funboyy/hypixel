@@ -26,8 +26,6 @@ public class FastPlayActivity extends Activity {
 
   public static final String TRANSLATION_PREFIX = HypixelAddon.get().namespace() + ".gui.fastPlay";
 
-  // ToDo: rewrite to use the pop up
-
   private final FastPlayConfiguration configuration;
 
   private final VerticalListWidget<FastPlayWidget> fastPlayList;
