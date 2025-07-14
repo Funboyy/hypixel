@@ -1,6 +1,5 @@
 package de.funboyy.addon.hypixel.core.location;
 
-import com.google.gson.JsonParser;
 import de.funboyy.addon.hypixel.api.Hypixel;
 import de.funboyy.addon.hypixel.api.chat.filter.AdvancedChatFilter;
 import de.funboyy.addon.hypixel.api.location.GameMode;
