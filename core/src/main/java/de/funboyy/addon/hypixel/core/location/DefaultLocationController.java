@@ -1,5 +1,6 @@
 package de.funboyy.addon.hypixel.core.location;
 
+import com.google.gson.JsonParser;
 import de.funboyy.addon.hypixel.api.Hypixel;
 import de.funboyy.addon.hypixel.api.chat.filter.AdvancedChatFilter;
 import de.funboyy.addon.hypixel.api.location.GameMode;
@@ -11,6 +12,7 @@ import de.funboyy.addon.hypixel.api.location.Type;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import net.labymod.api.Laby;
+import net.labymod.api.util.StringUtil;
 
 public class DefaultLocationController implements LocationController {
 
@@ -54,11 +56,11 @@ public class DefaultLocationController implements LocationController {
 
   @SuppressWarnings("SameReturnValue")
   private boolean handleLocation(final Matcher matcher) {
-    final String server = matcher.group("server");
-    final String name = matcher.group("name");
-    final Type type = Type.of(matcher.group("type"));
-    final Mode mode = Mode.of(type, matcher.group("mode"));
-    final String map = matcher.group("map");
+    final String server = StringUtil.parseEscapedUnicode(matcher.group("server"));
+    final String name = StringUtil.parseEscapedUnicode(matcher.group("name"));
+    final Type type = Type.of(StringUtil.parseEscapedUnicode(matcher.group("type")));
+    final Mode mode = Mode.of(type, StringUtil.parseEscapedUnicode(matcher.group("mode")));
+    final String map = StringUtil.parseEscapedUnicode(matcher.group("map"));
 
     this.location = new Location(server, name,  type, mode, map);
 
