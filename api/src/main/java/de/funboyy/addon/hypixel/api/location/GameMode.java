@@ -46,6 +46,7 @@ public enum GameMode implements Mode {
   ARCADE_SANTA_SAYS(ServerType.ARCADE, "Santa Says", "SANTA_SAYS"),
   ARCADE_EASTER_SIMULATOR(ServerType.ARCADE, "Easter Simulator", "EASTER_SIMULATOR"),
   ARCADE_HALLOWEEN_SIMULATOR(ServerType.ARCADE, "Halloween Simulator", "HALLOWEEN_SIMULATOR"),
+  ARCADE_SCUBA_SIMULATOR(ServerType.ARCADE, "Scuba Simulator", "SCUBA_SIMULATOR"),
 
   // Cops and Crims
   MCGO_NORMAL(ServerType.MCGO, "Defusal", "NORMAL"),
@@ -115,7 +116,7 @@ public enum GameMode implements Mode {
   BEDWARS_FOUR_THREE(ServerType.BEDWARS, "3v3v3v3"),
   BEDWARS_FOUR_FOUR(ServerType.BEDWARS, "4v4v4v4"),
   BEDWARS_TWO_FOUR(ServerType.BEDWARS, "4v4"),
-  BEDWARS_PRACTICE(ServerType.BEDWARS, "Partice"),
+  BEDWARS_PRACTICE(ServerType.BEDWARS, "Practice"),
   BEDWARS_EIGHT_ONE_RUSH(ServerType.BEDWARS, "Rush Solo"),
   BEDWARS_EIGHT_TWO_RUSH(ServerType.BEDWARS, "Rush Doubles"),
   BEDWARS_FOUR_FOUR_RUSH(ServerType.BEDWARS, "Rush 4v4v4v4"),
