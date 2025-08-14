@@ -134,6 +134,9 @@ public enum GameMode implements Mode {
   BEDWARS_FOUR_FOUR_SWAP(ServerType.BEDWARS, "Swappage 4v4v4v4"),
   BEDWARS_EIGHT_TWO_UNDERWORLD(ServerType.BEDWARS, "Underworld Doubles"),
   BEDWARS_FOUR_FOUR_UNDERWORLD(ServerType.BEDWARS, "Underworld 4v4v4v4"),
+  // this is theoretically a duel, but server type is 'BEDWARS' and it is in both lobbies
+  BEDWARS_TWO_ONE_DUELS(ServerType.BEDWARS, "Bed Wars Duel"),
+  BEDWARS_TWO_ONE_DUELS_RUSH(ServerType.BEDWARS, "Bed Wars Rush Duel"),
 
   // Murder Mystery
   MURDER_CLASSIC(ServerType.MURDER_MYSTERY, "Classic"),
@@ -158,7 +161,8 @@ public enum GameMode implements Mode {
   DUELS_PARKOUR_EIGHT(ServerType.DUELS, "Hypixel Parkour"),
   DUELS_DUEL_ARENA(ServerType.DUELS, "Duel Arena"),
   DUELS_BLITZ_DUEL(ServerType.DUELS, "Blitz Duel"),
-  DUELS_BOWSLEEF_DUEL(ServerType.DUELS, "Bow Spleef Duel"),
+  DUELS_BOWSPLEEF_DUEL(ServerType.DUELS, "Bow Spleef Duel"),
+  DUELS_SPLEEF_DUEL(ServerType.DUELS, "Spleef Duel"),
   DUELS_BRIDGE_DUEL(ServerType.DUELS, "Bridge Duel"),
   DUELS_BRIDGE_DOUBLES(ServerType.DUELS, "Bridge Doubles"),
   DUELS_BRIDGE_THREES(ServerType.DUELS, "Bridge 3v3"),
