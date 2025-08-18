@@ -153,6 +153,7 @@ public enum GameMode implements Mode {
 
   // Duels
   DUELS_CLASSIC_DUEL(ServerType.DUELS, "Classic Duel"),
+  DUELS_CLASSIC_DOUBLES(ServerType.DUELS, "Classic Doubles"),
   DUELS_BOW_DUEL(ServerType.DUELS, "Bow Duel"),
   DUELS_BOXING_DUEL(ServerType.DUELS, "Boxing Duel"),
   DUELS_COMBO_DUEL(ServerType.DUELS, "Combo Duel"),
@@ -180,6 +181,7 @@ public enum GameMode implements Mode {
   DUELS_UHC_DOUBLES(ServerType.DUELS, "UHC Doubles"),
   DUELS_UHC_FOUR(ServerType.DUELS, "UHC Teams"),
   DUELS_UHC_MEETUP(ServerType.DUELS, "UHC Deathmatch"),
+  DUELS_QUAKE_DUEL(ServerType.DUELS, "Quakecraft Duel"),
 
   // SkyBlock
   SKYBLOCK_HUB(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "Hub", "HUB", false),
