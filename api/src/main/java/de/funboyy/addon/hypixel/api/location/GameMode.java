@@ -134,6 +134,7 @@ public enum GameMode implements Mode {
   BEDWARS_FOUR_FOUR_SWAP(ServerType.BEDWARS, "Swappage 4v4v4v4"),
   BEDWARS_EIGHT_TWO_UNDERWORLD(ServerType.BEDWARS, "Underworld Doubles"),
   BEDWARS_FOUR_FOUR_UNDERWORLD(ServerType.BEDWARS, "Underworld 4v4v4v4"),
+  BEDWARS_EIGHT_ONE_ONEBLOCK(ServerType.BEDWARS, "One Block"),
   // this is theoretically a duel, but server type is 'BEDWARS' and it is in both lobbies
   BEDWARS_TWO_ONE_DUELS(ServerType.BEDWARS, "Bed Wars Duel"),
   BEDWARS_TWO_ONE_DUELS_RUSH(ServerType.BEDWARS, "Bed Wars Rush Duel"),
