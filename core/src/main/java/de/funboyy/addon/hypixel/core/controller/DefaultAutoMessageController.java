@@ -70,7 +70,8 @@ public class DefaultAutoMessageController implements AutoMessageController {
 
   private static final String REPEAT_MESSAGE = "You cannot say the same message twice!";
 
-  private static final long LAST_MESSAGE_DELAY = 5_000;
+  private static final long GAME_END_MESSAGE_DELAY = 5_000;
+  private static final long REPEAT_MESSAGE_DETECTION = 250;
 
   private final AutoMessageConfiguration configuration;
   private final FastPlayController fastPlayController;
@@ -125,7 +126,7 @@ public class DefaultAutoMessageController implements AutoMessageController {
   public boolean handleGameEnd() {
     final long currentTimeMillis = TimeUtil.getCurrentTimeMillis();
 
-    if (this.lastMessage + LAST_MESSAGE_DELAY > currentTimeMillis) {
+    if (this.lastMessage + GAME_END_MESSAGE_DELAY > currentTimeMillis) {
       return false;
     }
 
@@ -170,7 +171,7 @@ public class DefaultAutoMessageController implements AutoMessageController {
 
     final long currentTimeMillis = TimeUtil.getCurrentTimeMillis();
 
-    if (this.lastMessage + 500 < currentTimeMillis) {
+    if (this.lastMessage + REPEAT_MESSAGE_DETECTION < currentTimeMillis) {
       return false;
     }
 
