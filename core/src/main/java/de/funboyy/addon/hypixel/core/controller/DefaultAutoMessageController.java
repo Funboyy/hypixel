@@ -39,7 +39,7 @@ public class DefaultAutoMessageController implements AutoMessageController {
       "^ +You survived \\d+ rounds!$");
 
   private static final Pattern ARCADE_DISASTERS_PATTERN = Pattern.compile(
-      "^ {32}Survivors? \\(\\d\\):$");
+      "^ +Survivors? \\(\\d+\\):$");
 
   private static final Pattern ARCADE_DROPPER_PATTERN = Pattern.compile(
       "^ +#1 (?:\\[[^]]+] )?\\w{1,20} \\(\\d{2,}:\\d{2}:\\d{3}\\)$");
