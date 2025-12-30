@@ -153,8 +153,8 @@ public class DefaultAutoMessageController implements AutoMessageController {
           .chat("/ac " + text, false), delay, TimeUnit.SECONDS);
     }
 
-    this.scheduler.schedule(() -> this.fastPlayController.handleGameEnd(),
-        TimeUnit.SECONDS.toMillis(delay) + 750, TimeUnit.MILLISECONDS);
+    this.scheduler.schedule(this.fastPlayController::handleGameEnd,
+        TimeUnit.SECONDS.toMillis(delay) + 250, TimeUnit.MILLISECONDS);
     return false;
   }
 
