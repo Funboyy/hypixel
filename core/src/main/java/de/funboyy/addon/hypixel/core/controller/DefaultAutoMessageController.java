@@ -32,14 +32,20 @@ public class DefaultAutoMessageController implements AutoMessageController {
       "^ +Winn(?:er(?: -| ?:) (?:Red|Blue|Green|Yellow|RED|BLU|Hiders|Seekers|Defenders|Attackers)(?: Team)?"
           + "|ing Team(?: -| ?:) (?:Red|Blue|Green|Yellow|RED|BLU|Animals|Hunters|Survivors|Vampires))$");
 
+  private static final Pattern WINNING_TEAM_PATTERN = Pattern.compile(
+      "^ +(?:Red|Blue|Green|Yellow) Team has won the game!$");
+
   private static final Pattern ARCADE_CREEPER_ATTACK_PATTERN = Pattern.compile(
       "^ +You survived \\d+ rounds!$");
+
+  private static final Pattern ARCADE_DISASTERS_PATTERN = Pattern.compile(
+      "^ {32}Survivors? \\(\\d\\):$");
 
   private static final Pattern ARCADE_DROPPER_PATTERN = Pattern.compile(
       "^ +#1 (?:\\[[^]]+] )?\\w{1,20} \\(\\d{2,}:\\d{2}:\\d{3}\\)$");
 
   private static final Pattern ARCADE_PIXEL_PARTY_PATTERN = Pattern.compile(
-      "^ {36}Winner(s?)$");
+      "^ {36}Winners?$");
 
   private static final Pattern ARCADE_ZOMBIES_PATTERN = Pattern.compile(
       "^ +Zombies - \\d*:?\\d+:\\d+ \\(Round \\d+\\)$");
@@ -63,6 +69,8 @@ public class DefaultAutoMessageController implements AutoMessageController {
       "^ +Most Kills: (?:\\[[^]]+] )?\\w{1,20} - \\d+$");
 
   private static final String REPEAT_MESSAGE = "You cannot say the same message twice!";
+
+  private static final long LAST_MESSAGE_DELAY = 5_000;
 
   private final AutoMessageConfiguration configuration;
   private final FastPlayController fastPlayController;
@@ -89,8 +97,12 @@ public class DefaultAutoMessageController implements AutoMessageController {
         new AdvancedChatFilter(FIRST_PATTERN, matcher -> this.handleGameEnd()));
     chatRegistry.register("auto_message_winner",
         new AdvancedChatFilter(WINNER_PATTERN, matcher -> this.handleGameEnd()));
+    chatRegistry.register("auto_message_winning_team",
+        new AdvancedChatFilter(WINNING_TEAM_PATTERN, matcher -> this.handleGameEnd()));
     chatRegistry.register("auto_message_arcade_creeper_attack",
         new AdvancedChatFilter(ARCADE_CREEPER_ATTACK_PATTERN, matcher -> this.handleGameEnd()));
+    chatRegistry.register("auto_message_arcade_disasters",
+        new AdvancedChatFilter(ARCADE_DISASTERS_PATTERN, matcher -> this.handleGameEnd()));
     chatRegistry.register("auto_message_arcade_dropper",
         new AdvancedChatFilter(ARCADE_DROPPER_PATTERN, matcher -> this.handleGameEnd()));
     chatRegistry.register("auto_message_arcade_pixel_party",
@@ -113,7 +125,7 @@ public class DefaultAutoMessageController implements AutoMessageController {
   public boolean handleGameEnd() {
     final long currentTimeMillis = TimeUtil.getCurrentTimeMillis();
 
-    if (this.lastMessage + 5_000 > currentTimeMillis) {
+    if (this.lastMessage + LAST_MESSAGE_DELAY > currentTimeMillis) {
       return false;
     }
 
