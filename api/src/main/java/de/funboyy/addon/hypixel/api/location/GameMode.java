@@ -23,6 +23,7 @@ public enum GameMode implements Mode {
   ARCADE_DAY_ONE(ServerType.ARCADE, "Blocking Dead", "DAYONE"),
   ARCADE_BOUNTY_HUNTERS(ServerType.ARCADE, "Bounty Hunters", "ONEINTHEQUIVER"),
   ARCADE_CREEPER_DEFENSE(ServerType.ARCADE, "Creeper Attack", "DEFENDER"),
+  ARCADE_DISASTERS(ServerType.ARCADE, "Disasters", "DISASTERS"),
   ARCADE_DRAGON_WARS(ServerType.ARCADE, "Dragon Wars", "DRANGONWARS2"),
   ARCADE_DROPPER(ServerType.ARCADE, "Dropper", "DROPPER"),
   ARCADE_ENDER_SPLEEF(ServerType.ARCADE, "Ender Spleef", "ENDER"),
@@ -108,7 +109,6 @@ public enum GameMode implements Mode {
 
   // Prototype
   SKYBLOCK(ServerType.PROTOTYPE, ServerType.SKYBLOCK, "SkyBlock"),
-  PROTOTYPE_DISASTERS(ServerType.PROTOTYPE, "Disasters", "DISASTERS"),
 
   // Bed Wars
   BEDWARS_EIGHT_ONE(ServerType.BEDWARS, "Solo"),
