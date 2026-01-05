@@ -61,7 +61,7 @@ public class DefaultLocationController implements LocationController {
     final Mode mode = Mode.of(type, StringUtil.parseEscapedUnicode(matcher.group("mode")));
     final String map = StringUtil.parseEscapedUnicode(matcher.group("map"));
 
-    this.location = new Location(server, name,  type, mode, map);
+    this.location = new Location(server, name, type, mode, map);
 
     if (mode != null && mode.queueable()) {
       this.lastMode = mode;

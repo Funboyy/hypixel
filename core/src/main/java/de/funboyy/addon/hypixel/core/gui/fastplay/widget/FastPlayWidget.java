@@ -4,6 +4,7 @@ import de.funboyy.addon.hypixel.api.configuration.FastPlayConfiguration.FastPlay
 import de.funboyy.addon.hypixel.api.location.GameMode;
 import de.funboyy.addon.hypixel.api.location.ServerType;
 import de.funboyy.addon.hypixel.core.HypixelAddon;
+import java.util.Locale;
 import net.labymod.api.Textures;
 import net.labymod.api.client.gui.icon.Icon;
 import net.labymod.api.client.gui.lss.property.annotation.AutoWidget;
@@ -72,7 +73,7 @@ public class FastPlayWidget extends SimpleWidget {
       }
 
       return Icon.texture(ResourceLocation.create(namespace,
-          String.format("textures/mode/%s.png", mode.name().toLowerCase())));
+          String.format("textures/mode/%s.png", mode.name().toLowerCase(Locale.ROOT))));
     }
 
     if (type == ServerType.PROTOTYPE) {
@@ -82,7 +83,7 @@ public class FastPlayWidget extends SimpleWidget {
     }
 
     return Icon.texture(ResourceLocation.create(namespace,
-        String.format("textures/lobby/%s.png", type.name().toLowerCase())));
+        String.format("textures/lobby/%s.png", type.name().toLowerCase(Locale.ROOT))));
   }
 
   private String keyDisplayName(final Key key) {

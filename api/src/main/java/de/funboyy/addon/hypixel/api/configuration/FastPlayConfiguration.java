@@ -25,19 +25,17 @@ public interface FastPlayConfiguration extends ConfigAccessor {
   class FastPlay {
 
     private boolean enabled;
-    private ServerType type;
     private GameMode mode;
     private Key key;
 
-    private FastPlay(final boolean enabled, final ServerType type, final GameMode mode, final Key key) {
+    private FastPlay(final boolean enabled, final GameMode mode, final Key key) {
       this.enabled = enabled;
-      this.type = type;
       this.mode = mode;
       this.key = key;
     }
 
-    public static FastPlay create(final boolean enabled, final ServerType type, final GameMode mode, final Key key) {
-      return new FastPlay(enabled, type, mode, key);
+    public static FastPlay create(final boolean enabled, final GameMode mode, final Key key) {
+      return new FastPlay(enabled, mode, key);
     }
 
     public boolean enabled() {
@@ -49,11 +47,7 @@ public interface FastPlayConfiguration extends ConfigAccessor {
     }
 
     public ServerType type() {
-      return this.type;
-    }
-
-    public void type(final ServerType type) {
-      this.type = type;
+      return this.mode.lobbyType();
     }
 
     public GameMode mode() {
@@ -73,7 +67,7 @@ public interface FastPlayConfiguration extends ConfigAccessor {
     }
 
     public String displayName() {
-      return this.type.displayName() + " - " + this.mode.displayName();
+      return this.mode.lobbyType().displayName() + " - " + this.mode.displayName();
     }
 
   }

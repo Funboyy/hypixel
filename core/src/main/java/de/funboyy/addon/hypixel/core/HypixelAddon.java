@@ -6,6 +6,7 @@ import de.funboyy.addon.hypixel.api.chat.ChatRegistry;
 import de.funboyy.addon.hypixel.api.controller.AutoMessageController;
 import de.funboyy.addon.hypixel.api.controller.FastPlayController;
 import de.funboyy.addon.hypixel.api.controller.TipController;
+import de.funboyy.addon.hypixel.core.gson.JsonConfigLoaderInitializeListener;
 import de.funboyy.addon.hypixel.api.location.LocationController;
 import de.funboyy.addon.hypixel.api.util.GradientBuilder;
 import de.funboyy.addon.hypixel.core.chat.DefaultChatRegistry;
@@ -53,12 +54,20 @@ public class HypixelAddon extends LabyAddon<DefaultHypixelConfiguration> impleme
   }
 
   @Override
+  protected void preConfigurationLoad() {
+    super.registerListener(new JsonConfigLoaderInitializeListener());
+  }
+
+  @Override
   protected void enable() {
-    this.registerSettingCategory();
-    this.registerListener(this.chatRegistry);
-    this.registerListener(this.fastPlayController);
-    this.registerCommand(new LocationCommand(this));
-    this.labyAPI().serverController().registerServer(this.server);
+    super.registerSettingCategory();
+
+    super.registerListener(this.chatRegistry);
+    super.registerListener(this.fastPlayController);
+
+    super.registerCommand(new LocationCommand(this));
+
+    super.labyAPI().serverController().registerServer(this.server);
   }
 
   @Override
@@ -78,7 +87,7 @@ public class HypixelAddon extends LabyAddon<DefaultHypixelConfiguration> impleme
 
   @Override
   public boolean isEnabled() {
-    return this.configuration().enabled().get() && this.server.isOnline();
+    return super.configuration().enabled().get() && this.server.isOnline();
   }
 
   @Override
