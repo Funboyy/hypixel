@@ -56,7 +56,7 @@ public class ManageFastPlayPopup extends SimpleAdvancedPopup {
       this.key = fastPlay.key();
     }
 
-    this.doneButton = SimplePopupButton.create("test-button", Component
+    this.doneButton = SimplePopupButton.create(Component
             .translatable(FastPlayActivity.TRANSLATION_PREFIX + ".button.done"),
         button -> this.save());
 
@@ -128,6 +128,10 @@ public class ManageFastPlayPopup extends SimpleAdvancedPopup {
       modeWidget.clear();
 
       for (final GameMode mode : GameMode.values()) {
+        if (!mode.queueable()) {
+          continue;
+        }
+
         if (mode.lobbyType() == type) {
           modeWidget.add(mode.displayName());
         }
@@ -214,7 +218,7 @@ public class ManageFastPlayPopup extends SimpleAdvancedPopup {
       return;
     }
 
-    final FastPlayWidget widget = new FastPlayWidget(FastPlay.create(this.enabled, this.type, this.mode, this.key));
+    final FastPlayWidget widget = new FastPlayWidget(FastPlay.create(this.enabled, this.mode, this.key));
 
     this.saveListener.accept(widget);
   }
