@@ -155,7 +155,7 @@ public class DefaultAutoMessageController implements AutoMessageController {
     }
 
     this.scheduler.schedule(this.fastPlayController::handleGameEnd,
-        TimeUnit.SECONDS.toMillis(delay) + 250, TimeUnit.MILLISECONDS);
+        TimeUnit.SECONDS.toMillis(delay) + (REPEAT_MESSAGE_DETECTION * 2), TimeUnit.MILLISECONDS);
     return false;
   }
 
